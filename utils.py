@@ -5,6 +5,13 @@ from itertools import cycle
 def read_int(reader):
     return int.from_bytes(reader.read(32), byteorder='big')
 
+def coprime(n):
+	m = sp.randprime(2 ** 16, 2 ** 32)
+	while np.gcd(m, n) != 1:
+		m = sp.randprime(2 ** 16, 2 ** 32)
+
+	return m
+
 def prime_with(p):
     k = sp.randprime(2, p)
     while np.gcd(k, p) != 1:

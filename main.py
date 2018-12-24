@@ -1,4 +1,3 @@
-
 from rsa import Rsa
 from utils import read_int
 
@@ -51,6 +50,8 @@ def rsa():
         rsa.decrypt(res_encrypted, test_encrypt)
 
     test_encrypt.close()
+
+    print(rsa.keygen())
 
 if __name__ == "__main__":
     rsa()

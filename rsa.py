@@ -1,11 +1,22 @@
 import os
-from utils import read_int
+import sympy as sp
+from utils import read_int, modinv, coprime
 
 class Rsa:
     def __init__(self, n, e, d):
         self.n = n
         self.e = e
         self.d = d
+
+    def keygen(self):
+        p = sp.randprime(2 ** 64, 2 ** 128)
+        q = sp.randprime(2 ** 64, 2 ** 128)
+        n = p * q
+        j_n = (p - 1) * (q - 1)
+        e = coprime(j_n)
+        d = modinv(e, j_n)
+
+        return (d, n, e)
     
     def decrypt(self, reader, writer):
         length = os.fstat(reader.fileno()).st_size

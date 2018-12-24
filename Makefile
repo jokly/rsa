@@ -1,5 +1,8 @@
+rsa:
+	python3 main.py
+
 alice:
 	python3 alice.py
 
-make bob:
+bob:
 	python3 bob.py
